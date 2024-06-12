@@ -45,11 +45,17 @@
                     {
                         if (!resultList.Contains(w))
                         {
+                            if (resultList.Count > 0)
+                            {
+                                if (resultList.Count % 5 == 0) Console.Write("\n");
+                                else Console.Write("\t");
+                            }
                             resultList.Add(w);
-                            Console.WriteLine(w);
+                            Console.Write(w);
                         }
                     }
                 }
+                if (resultList.Count > 0) Console.Write("\n");
             }
         }
 
@@ -64,7 +70,7 @@
                     string[] parts = line.Split(new char[] { '\t', ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     if (parts.Length > 0)
                     {
-                        words.Add(parts[0]);
+                        words.Add(parts[0].ToLower());
                     }
                 }
             }
@@ -73,5 +79,5 @@
                 Console.WriteLine("读取文件时出错：" + e.Message);
             }
         }
-    }    
+    }
 }
